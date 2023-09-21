@@ -13,17 +13,23 @@ public class Main {
     public static final String SET_PHONE      = "SP";
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
+<<<<<<< Updated upstream
 
     public static final String REPEATED_PHONES  = "EP";
+=======
+    public static final String GET_NUMBER     = "GN";
+
+>>>>>>> Stashed changes
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
-    public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
-    public static final String NAME_NOT_EXIST = "contactBook.Contact does not exist.";
-    public static final String CONTACT_ADDED = "contactBook.Contact added.";
-    public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
-    public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
-    public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
+    public static final String CONTACT_EXISTS = "Contact already exists.";
+    public static final String NAME_NOT_EXIST = "Contact does not exist.";
+    public static final String CONTACT_ADDED = "Contact added.";
+    public static final String CONTACT_REMOVED = "Contact removed.";
+    public static final String CONTACT_UPDATED = "Contact updated.";
+    public static final String BOOK_EMPTY = "Contact book empty.";
+    public static final String NO_PHONE = "Phone number does not exist.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
 
@@ -55,12 +61,20 @@ public class Main {
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
+<<<<<<< Updated upstream
 
 
 
                 case REPEATED_PHONES:
                     checkRepeatedPhones(cBook);
                     break;
+=======
+                case GET_NUMBER:
+                    getContactByNumber(cBook, in);
+                    break;
+
+
+>>>>>>> Stashed changes
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -156,11 +170,40 @@ public class Main {
         else System.out.println(BOOK_EMPTY);
     }
 
+<<<<<<< Updated upstream
     private static void checkRepeatedPhones(ContactBook cbook) {
         if (cbook.checkRepeatedPhones()) {
             System.out.println("There are contacts that share phone numbers."); 
             return;
         }
         System.out.println("All contacts have different phone numbers.");
+=======
+
+
+
+
+
+
+
+    
+    private static void getContactByNumber(ContactBook cbook, Scanner in) {
+        if (cbook.getNumberOfContacts() <= 0) {
+            System.out.println(NO_PHONE);
+            return;
+        } else {
+            int phoneNumber = in.nextInt();
+
+            cbook.initializeIterator();
+            while (cbook.hasNext()) {
+                Contact c = cbook.next();
+                if (c.getPhone() == phoneNumber) {
+                    System.out.println(c.getName());
+                    return;
+                }
+            }
+        }
+
+        System.out.println(NO_PHONE);
+>>>>>>> Stashed changes
     }
 }
