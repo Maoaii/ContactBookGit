@@ -13,13 +13,8 @@ public class Main {
     public static final String SET_PHONE      = "SP";
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
-<<<<<<< Updated upstream
-
     public static final String REPEATED_PHONES  = "EP";
-=======
     public static final String GET_NUMBER     = "GN";
-
->>>>>>> Stashed changes
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
@@ -61,20 +56,12 @@ public class Main {
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
-<<<<<<< Updated upstream
-
-
-
                 case REPEATED_PHONES:
                     checkRepeatedPhones(cBook);
                     break;
-=======
                 case GET_NUMBER:
                     getContactByNumber(cBook, in);
                     break;
-
-
->>>>>>> Stashed changes
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -170,22 +157,13 @@ public class Main {
         else System.out.println(BOOK_EMPTY);
     }
 
-<<<<<<< Updated upstream
     private static void checkRepeatedPhones(ContactBook cbook) {
         if (cbook.checkRepeatedPhones()) {
             System.out.println("There are contacts that share phone numbers."); 
             return;
         }
         System.out.println("All contacts have different phone numbers.");
-=======
-
-
-
-
-
-
-
-    
+    }
     private static void getContactByNumber(ContactBook cbook, Scanner in) {
         if (cbook.getNumberOfContacts() <= 0) {
             System.out.println(NO_PHONE);
@@ -204,6 +182,5 @@ public class Main {
         }
 
         System.out.println(NO_PHONE);
->>>>>>> Stashed changes
     }
 }
