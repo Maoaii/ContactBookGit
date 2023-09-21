@@ -2,6 +2,8 @@ package contactBook;
 
 import contactBook.Contact;
 
+import java.util.Iterator;
+
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -95,14 +97,20 @@ public class ContactBook {
 
     public boolean checkRepeatedPhones() {
         int[] phones = new int[contacts.length];
-        for (int i = 0; i < contacts.length; i++)
-            phones[i] = contacts[i].getPhone();
+
+        initializeIterator();
+        int k = 0;
+        while (hasNext()) {
+            Contact c = next();
+            phones[k] = c.getPhone();
+            k++;
+        }
 
         for (int i = 0; i < phones.length-1; i++)
             for(int j = i+1; j < phones.length; j++)
                 if (phones[i] == phones[j])
                     return true;
-                    
+
         return false;
     }
 
