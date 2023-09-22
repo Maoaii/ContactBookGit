@@ -96,7 +96,9 @@ public class ContactBook {
     }
 
     public boolean checkRepeatedPhones() {
-        int[] phones = new int[contacts.length];
+        if (this.getNumberOfContacts() < 2) return false;
+
+        int[] phones = new int[this.getNumberOfContacts()];
 
         initializeIterator();
         int k = 0;
